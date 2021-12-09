@@ -13,7 +13,22 @@ import DraggableItem from './components/DraggableItem';
 const App = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [flatListTopOffset, setFlatListTopOffset] = useState(0);
-  const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+  const [data, setData] = useState([
+    {id: 1, content: 'go outside'},
+    {id: 2, content: 'burger'},
+    {id: 3, content: 'salad'},
+    {id: 4, content: 'roam'},
+    {id: 5, content: 'play'},
+    {id: 6, content: 'go outside'},
+    {id: 7, content: 'burger'},
+    {id: 8, content: 'salad'},
+    {id: 9, content: 'roam'},
+    {id: 10, content: 'play'},
+    {id: 11, content: 'burger'},
+    {id: 12, content: 'salad'},
+    {id: 13, content: 'roam'},
+    {id: 14, content: 'play'},
+  ]);
   return (
     <View style={styles.container}>
       <FlatList
@@ -25,10 +40,10 @@ const App = () => {
         onLayout={e => {
           setFlatListTopOffset(e.nativeEvent.layout.y);
         }}
-        extraData={data}
         renderItem={({item}) => (
           <DraggableItem
-            item={item}
+            item={item.content}
+            index={item.id}
             scrollOffset={scrollOffset}
             flatListTopOffset={flatListTopOffset}
             setData={setData}

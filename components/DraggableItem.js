@@ -1,7 +1,17 @@
 import React, {useRef, useState} from 'react';
-import {StyleSheet, Text, View, Animated, PanResponder} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  PanResponder,
+  TouchableOpacity,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+
 const DraggableItem = ({
   item,
+  index,
   scrollOffset,
   flatListTopOffset,
   data,
@@ -36,6 +46,15 @@ const DraggableItem = ({
     );
   }
 
+  const calculateNewIdx = () => {
+    const value = Math.floor(
+      (scrollOffset + currentY - flatListTopOffset) / rowHeight,
+    );
+    if (value >= data.length) value = data.length - 1;
+    else if (value < 0) value = 0;
+    return value;
+  };
+
   const pan = useRef(new Animated.ValueXY()).current;
   const panResponder = PanResponder.create({
     onMoveShouldSetPanResponder: () => true,
@@ -62,9 +81,7 @@ const DraggableItem = ({
         },
       ).start();
 
-      newidx = Math.floor(
-        (scrollOffset + currentY - flatListTopOffset) / rowHeight,
-      );
+      newidx = calculateNewIdx();
       if (newidx !== currentidx) {
         immutableMove(data, currentidx, newidx);
       }
@@ -79,9 +96,19 @@ const DraggableItem = ({
       }}
       style={{
         transform: [{translateX: pan.x}, {translateY: pan.y}],
-      }}
-      {...panResponder.panHandlers}>
-      <Text style={styles.item}>{item}</Text>
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        borderWidth: 1,
+      }}>
+      <View>
+        <Text style={styles.item}>
+          {index}.{item}
+        </Text>
+      </View>
+      <View {...panResponder.panHandlers}>
+        <Icon name="drag" size={30} style={{marginTop: 20}} />
+      </View>
     </Animated.View>
   );
 };
