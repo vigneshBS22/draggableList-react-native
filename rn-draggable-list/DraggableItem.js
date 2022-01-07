@@ -1,12 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-  PanResponder,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, Animated, PanResponder} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
 const DraggableItem = ({
@@ -100,10 +93,11 @@ const DraggableItem = ({
         justifyContent: 'space-between',
         flexDirection: 'row',
         borderWidth: 1,
+        padding: 4,
       }}>
       <View>
         <Text style={styles.item}>
-          {index}.{item}
+          {index}. {item}
         </Text>
       </View>
       <View {...panResponder.panHandlers}>
