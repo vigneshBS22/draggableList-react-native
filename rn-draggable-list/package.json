@@ -1,6 +1,6 @@
 {
   "name": "rn-draggable-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "draggable list for react native",
   "main": "index.js",
   "scripts": {
@@ -13,11 +13,14 @@
     "react-native": "0.66.3",
     "react-native-vector-icons": "^9.0.0"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vigneshBS22/rn-draggable-list.git"
+    "url": "git+https://github.com/vigneshBS22/rn-draggable-list.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "branches": [
+      "master"
+    ]
   }
 }
