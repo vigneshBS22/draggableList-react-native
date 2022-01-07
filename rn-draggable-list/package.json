@@ -12,5 +12,12 @@
     "react": "17.0.2",
     "react-native": "0.66.3",
     "react-native-vector-icons": "^9.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigneshBS22/rn-draggable-list.git"
   }
 }
