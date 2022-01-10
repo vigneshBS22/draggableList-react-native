@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 import DraggableItem from './DraggableItem';
 
-const DraggableList = ({data}) => {
+const DraggableList = ({data, dragIcon, content, styles}) => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [flatListTopOffset, setFlatListTopOffset] = useState(0);
   const [items, setItems] = useState(data);
   return (
-    <View style={styles.container}>
+    <View style={listStyle.container}>
       <FlatList
-        style={{width: '100%'}}
+        style={{width: '100%', height: '50%'}}
         data={items}
         onScroll={e => {
           setScrollOffset(e.nativeEvent.contentOffset.y);
@@ -25,6 +25,9 @@ const DraggableList = ({data}) => {
             flatListTopOffset={flatListTopOffset}
             setData={setItems}
             data={items}
+            dragIcon={dragIcon}
+            content={content}
+            styles={styles}
           />
         )}
       />
@@ -34,7 +37,7 @@ const DraggableList = ({data}) => {
 
 export default DraggableList;
 
-const styles = StyleSheet.create({
+const listStyle = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',

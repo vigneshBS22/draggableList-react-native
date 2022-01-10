@@ -1,6 +1,6 @@
 {
   "name": "rn-draggable-list",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "draggable list for react native",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,6 @@
     "branches": [
       "master"
     ]
-  }
+  },
+  "homepage": "https://github.com/vigneshBS22/rn-draggable-list#readme"
 }
