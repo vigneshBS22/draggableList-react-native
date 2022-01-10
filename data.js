@@ -1,5 +1,5 @@
 export const Data = [
-  {id: 1, content: 'go outside'},
+  {id: 1, content: 'walk outside'},
   {id: 2, content: 'burger'},
   {id: 3, content: 'salad'},
   {id: 4, content: 'roam'},

@@ -9,6 +9,23 @@ const DraggableItem = ({
   flatListTopOffset,
   data,
   setData,
+  dragIcon = <Icon name="drag" size={30} style={{marginTop: 20}} />,
+  styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    item: {
+      fontSize: 24,
+      fontWeight: '600',
+      padding: 20,
+      textAlign: 'center',
+    },
+    highlight: {
+      fontWeight: '700',
+    },
+  }),
 }) => {
   const [rowHeight, setRowHeight] = useState(0);
   let currentidx = 0;
@@ -64,15 +81,10 @@ const DraggableItem = ({
       currentY = gestureState.moveY;
     },
     onPanResponderRelease: (e, gestureState) => {
-      Animated.spring(
-        pan,
-        {
-          toValue: {x: 0, y: 0},
-        },
-        {
-          useNativeDriver: false,
-        },
-      ).start();
+      Animated.spring(pan, {
+        toValue: {x: 0, y: 0},
+        useNativeDriver: false,
+      }).start();
 
       newidx = calculateNewIdx();
       if (newidx !== currentidx) {
@@ -100,28 +112,9 @@ const DraggableItem = ({
           {index}. {item}
         </Text>
       </View>
-      <View {...panResponder.panHandlers}>
-        <Icon name="drag" size={30} style={{marginTop: 20}} />
-      </View>
+      <View {...panResponder.panHandlers}>{dragIcon}</View>
     </Animated.View>
   );
 };
 
 export default DraggableItem;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  item: {
-    fontSize: 24,
-    fontWeight: '600',
-    padding: 20,
-    textAlign: 'center',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
